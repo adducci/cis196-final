@@ -1,0 +1,18 @@
+<form action='/actors' method='post'>
+  <% if @actor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@actor.errors.count, "error") %> prohibited this actor from being saved:</h2>
+
+      <ul>
+      <% @actor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<label for='name'>Name:</label>
+  <input name='name'></input>
+  <br>
+  <input type='submit' value='Add'>
+</form>

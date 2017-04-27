@@ -1,0 +1,17 @@
+<nav class="nav-banner">
+  <a class="nav-btn" href="/">Home</a>
+  <a class="nav-btn" href="/users">Users</a>
+  <a class="nav-btn" href="/search">Search</a>
+  <% if logged_in? %>
+    <td><%= link_to 'Profile', current_user %>
+    <td><%= link_to 'History', '/history' %>
+    <td><%= link_to 'Log out', logout_path, method: :delete %></td>
+  <% else %>
+   <a class="nav-btn" href="/login">Log in</a>
+   <a class="nav-btn" href="/users/new">Sign up</a>
+  <% end %>
+  <!-- Add link to user's show page and log out button if logged in -->
+  <!-- Add log out link otherwise -->
+  <span class="nav-sessions">
+  </span>
+</nav>

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<p>
+  The actors <%= link_to @match.actors.first.name, "/actors/#{@match.actors.first.id}" %> and <%= link_to @match.actors.second.name, "/actors/#{@match.actors.second.id}" %> have appeared in
+   <% if @match.movies.empty? %>
+     no films together.
+     </p>
+   <% else %>
+   the following films together:
+  <ol>
+				<% @match.movies.each do |movie| %>
+					<h3><%=movie.title%></h3>
+				<% end %>
+			</ol> 
+</p>
+<% end %>
+
+<br>
+<% if !@match.users.empty? %>
+ <% unless current_user != nil && @match.users.size == 1 && @match.users.first.id == current_user.id %>
+  <p>
+  <% if logged_in? %>
+    Other users
+  <% else %>
+    Users
+  <% end %>
+    who have made the same search:
+  </p>
+  <ol>
+    <% @match.users.each do |user| %>
+      <% if !logged_in? || user.id != current_user.id %>
+      <%= link_to user.name, "/users/#{user.id}" %>
+      <% end %>
+    <% end %>
+  </ol> 
+<% end %>
+<% end %>
+<%= link_to 'New Search', '/search' %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+<br>
+<% if current_user == @user %>
+<%= link_to 'Edit', edit_user_path(@user) %> | 
+<%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</p>
+
+<% if @user.actors.empty? %>
+    <strong> No Favorite Actors </strong><br>
+    <% if current_user == @user %>
+        <%= link_to 'Add Favorite Actor', '/actors' %>
+    <% end %>
+<% else %>
+     <strong>Favorite Actors </strong><br>
+    <% if current_user == @user %>
+        <%= link_to 'Add Favorite Actor', '/actors' %><br>
+    <% end %>
+    <% @user.actors.each do |actor| %>
+        <br><strong><%= link_to actor.name, "/actors/#{actor.id}" %></strong>
+        <% if current_user == @user %>
+            <%= link_to 'Remove?', "/actors/#{actor.id}", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+    <% end %>
+<% end %>
+ 
+
+
+

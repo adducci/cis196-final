@@ -1,0 +1,17 @@
+<% if logged_in? %>
+	<h1 class="welcome-banner">Hi <%= current_user.name %>, welcome back!</h1>
+	<p>
+Continue to search for matches between actors!
+</p>
+<% else %>
+	<h1 class="welcome-banner">Welcome to Actor Match!</h1>
+	<p>
+Actor Match is a website that allows you to type in two actors and see which films they have been in together!
+</p>
+<% end %>
+
+
+<br><br><br>
+<p>
+This product uses the TMDb API but is not endorsed or certified by TMDb.
+</p>

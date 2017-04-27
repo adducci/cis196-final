@@ -1,0 +1,20 @@
+<form action='/search' method='post'>
+	<% if @match.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@match.errors.count, "error") %> prohibited this from being saved:</h2>
+
+        <ul>
+        <% @match.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <label for='first'>Actor 1:</label>
+  <input name='first'></input>
+  <br>
+  <label for='second'>Actor 2:</label>
+  <input name='second'></input>
+  <br>
+  <input type='submit' value='Search'>
+</form>

@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+ <h1>Search History</h1>
+<% if logged_in? %>
+  <% if current_user.matches.empty?%>
+     <p> Search history empty </p>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Actor 1</th>
+        <th>Actor 2</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @matches.each do |match| %>
+        <% if current_user.matches.include? match %>
+        <tr>
+          <td><%= match.actors.first.name %></td>
+          <td><%= match.actors.second.name%></td>
+          <td><%= link_to 'Show', "matches/#{match.id}" %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <% end %>
+<% else %>
+   <p> Please log in to see search history </p>
+<% end %>
+
+
+<%= link_to 'New Search', '/search' %>
